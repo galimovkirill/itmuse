@@ -4,7 +4,7 @@
     tag="button"
     :disabled="!to"
     :class="[buttonClasses]"
-    class="text-white p-4 rounded-lg"
+    class="p-4 rounded-lg"
   >
     {{ label }}
   </router-link>
@@ -26,7 +26,12 @@ export default {
     type: {
       type: String,
       default: "primary",
-      validator: (value) => ["primary, secondary"].includes(value),
+      validator: (value) => ["primary", "secondary"].includes(value),
+    },
+
+    isWhite: {
+      type: Boolean,
+      default: false,
     },
   },
 
@@ -34,9 +39,10 @@ export default {
     buttonClasses() {
       switch (this.type) {
         case "primary":
-          return "border border-white";
-        case "secondary":
           return "text-white bg-orange-500 hover:bg-orange-550";
+        case "secondary":
+          if (this.isWhite) return "border border-white text-white";
+          return "border border-orange-500 text-orange-500";
         default:
           return "";
       }

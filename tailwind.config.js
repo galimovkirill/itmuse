@@ -26,7 +26,7 @@ module.exports = {
         550: "#fd7614",
       },
       gray: {
-        500: "#ececec",
+        500: "#e1e1e1",
       },
     },
 
